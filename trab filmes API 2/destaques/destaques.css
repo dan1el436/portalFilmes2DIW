@@ -1,0 +1,43 @@
+.pesquisa{
+    margin-top: 1.25rem;
+}
+.title{
+    display: flex;
+    justify-content: center;
+}
+h1{
+    margin-top: 2rem;
+    text-align: center;
+    background-color: #000000;
+    border-radius: 2cm;
+    width: 50%;
+    color: rgb(255, 0, 0);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+.navbar{
+    background-color: #000000 ;
+}
+#nav-item{
+    margin-left: 2rem;
+    font-size: x-large;
+    color: rgb(255, 0, 0);
+}
+.row{
+    display: flex;
+    justify-content: space-around;
+}
+.card{
+    width: 30rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+.card-img-top{
+    margin-top: 0.5rem;
+}
+.card-text{
+    font-size: 1.2rem;
+}
+.list-group{
+    font-weight: bold;
+}

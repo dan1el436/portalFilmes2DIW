@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="destaques.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <div class="logo">
+                <a class="navbar-brand" id="nav-item" href="#">D FILMS</a>
+            </div>
+            <div class="navbar-nav">
+                <a class="nav-link active" id="nav-item" aria-current="page" href="#">HOME</a>
+                <a class="nav-link" id="nav-item" href="#">FILMES</a>             
+            </div>
+            <div class="pesquisa">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">&#128269</span>
+                    <input type="text" class="form-control" placeholder="Pesquisa" aria-label="Username"
+                        aria-describedby="basic-addon1">
+                </div>
+            </div>
+        </div>
+    </nav>    
+    <div class="container">
+        <div id="divDetalheFilme" class="row">
+
+        </div>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(location.search);
+        let id = params.get('id')
+
+
+        dadosFilmes = JSON.parse(localStorage.getItem('db_filmes'))
+        let idxFilme = dadosFilmes.results.findIndex((elem) => elem.id == id)
+
+        if (idxFilme > -1) {
+            let filme = dadosFilmes.results[idxFilme];
+            document.getElementById('divDetalheFilme').innerHTML = `
+        <div class="card" style="width: 35rem;">
+  <img class="card-img-top" src="https://image.tmdb.org/t/p/w500${filme.poster_path}" alt="Card image cap">
+  <div class="card-body">
+    <h3 class="card-title">${filme.title}</h3>
+    <p class="card-text">${filme.overview}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">AVALIAÇÃO: ${filme.vote_average}</li>
+    <li class="list-group-item">LANÇAMENTO: ${filme.release_date}</li>
+    <li class="list-group-item">NOME ORIGINAL: ${filme.original_title}</li>
+  </ul>  
+</div>`
+        }
+        else {
+            alert('Filme não encontrado')
+        }
+    </script>
+</body>
+
+</html>
